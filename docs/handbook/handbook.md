@@ -796,7 +796,7 @@ When translating Piranha code into C++ instances, what is actually *happening* n
 
 Intuitively, it is easy to see that we are creating two nodes `a` and `b`. We are then feeding the entire node `a` to `port0` of `b` and only its output `port` to `port1` of `b`. While this makes sense, we must be more specific when writing our language rules. We've already assumed that the literal `15` will be translated to some kind of integer type, when in reality that doesn't have to happen at all!
 
-A Piranha implementation could for whatever reason decide that it prefers literal integers to be represented as strings in the underlying C++ code and this would be completely valid. Thus, we he have to explicitly specify *channel types*. Think of each input and output port communicating through a channel that can only transmit one type of information. With this in mind, we'll now specify how we want our new compiler to handle integers and integer literals in the `registerBuiltinNodeTypes()` function.
+A Piranha implementation could for whatever reason decide that it prefers literal integers to be represented as strings in the underlying C++ code and this would be completely valid. Thus, we have to explicitly specify *channel types*. Think of each input and output port communicating through a channel that can only transmit one type of information. With this in mind, we'll now specify how we want our new compiler to handle integers and integer literals in the `registerBuiltinNodeTypes()` function.
 
 `src/language_rules.cpp`:
 ```C++
