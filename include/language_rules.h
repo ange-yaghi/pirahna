@@ -126,10 +126,6 @@ namespace piranha {
 
         template <typename NativeType>
         std::string getLiteralBuiltinName() const { return ""; }
-        template<> std::string getLiteralBuiltinName<piranha::native_bool>() const { return *m_literalRules.lookup(LiteralType::Boolean); }
-        template<> std::string getLiteralBuiltinName<piranha::native_string>() const  { return *m_literalRules.lookup(LiteralType::String); }
-        template<> std::string getLiteralBuiltinName<piranha::native_int>() const  { return *m_literalRules.lookup(LiteralType::Integer); }
-        template<> std::string getLiteralBuiltinName<piranha::native_float>() const { return *m_literalRules.lookup(LiteralType::Float); }
 
         bool checkConversion(const ChannelType *input, const ChannelType *output) const;
         Node *generateConversion(const ChannelType *input, const ChannelType *output);
@@ -180,6 +176,11 @@ namespace piranha {
         NodeAllocator m_defaultNodeAllocator;
         NodeAllocator *m_nodeAllocator;
     };
+
+    template<> inline std::string LanguageRules::getLiteralBuiltinName<piranha::native_bool>() const { return *m_literalRules.lookup(LiteralType::Boolean); }
+    template<> inline std::string LanguageRules::getLiteralBuiltinName<piranha::native_string>() const { return *m_literalRules.lookup(LiteralType::String); }
+    template<> inline std::string LanguageRules::getLiteralBuiltinName<piranha::native_int>() const { return *m_literalRules.lookup(LiteralType::Integer); }
+    template<> inline std::string LanguageRules::getLiteralBuiltinName<piranha::native_float>() const { return *m_literalRules.lookup(LiteralType::Float); }
 
 } /* namespace piranha */
 

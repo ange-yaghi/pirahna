@@ -47,8 +47,7 @@ namespace piranha {
         template <typename _T>
         const _T validateData(const _T &data, bool recordErrors = false) { return data; }
 
-        template <>
-        const piranha::native_string validateData<piranha::native_string>(const piranha::native_string &data, bool recordErrors) {
+        const piranha::native_string validateData(const piranha::native_string &data, bool recordErrors) {
             piranha::native_string res;
             piranha::native_string::const_iterator it = data.begin();
             while (it != data.end()) {
